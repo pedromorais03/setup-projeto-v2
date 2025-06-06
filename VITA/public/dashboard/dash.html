@@ -1,0 +1,86 @@
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard VITA</title>
+  <link rel="stylesheet" href="../css/painel.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="shortcut icon" type="image/png" href="../logos/coracao-logo.png"> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="carregarDashboard()">
+    <div class="lateral">
+        <img class="logo" src="../assets/logo.png" alt="Vita Logo">
+        <div class="hello">
+            <h3> Bem vindo! </h3>
+        </div>
+        <nav>
+            <a href="./imc.html"><i class="fas fa-map"></i>Mapa IMC</a>
+            <a href="./dash.html"><i class="fa-solid fa-chart-bar"></i> Dashboard</a>
+            <a href="../index.html" class="sair" onclick="limparSessao()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+        </nav>
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+<section class="main">
+  <div class="kpi-container">
+    <div class="kpi-card"><div><h3>Maior IMC registrado</h3><p class="kpi-up" id="maior_imc"></p></div></div>
+    <div class="kpi-card"><div><h3>Maior fator agravante</h3><p class="kpi-right" id="fator"></p></div></div>
+    <div class="kpi-card"><div><h3>IMC médio Nacional</h3><p class="kpi-up" id="imc_nacional"></p></div></div>
+    <div class="kpi-card"><div><h3>Maior % de obesidade</h3><p class="kpi-down" id="obesidade">▼25%</p></div></div>
+    <div class="kpi-card"><div><h3>Maior % de sobrepeso</h3><p class="kpi-down" id="sobrepeso">▼38%</p></div></div>
+  </div>
+  <div class="botoes-barra">
+    <select id="select_estado" onchange="obterGraficoFatoresEstado(), obterGraficoSexoEstado(), obterGraficoIdadeEstado()">
+      <option value="" disabled selected>Selecione um Estado</option>
+      <option value="AC">Acre</option>
+      <option value="AL">Alagoas</option>
+      <option value="AP">Amapá</option>
+      <option value="AM">Amazonas</option>
+      <option value="BA">Bahia</option>
+      <option value="CE">Ceará</option>
+      <option value="DF">Distrito Federal</option>
+      <option value="ES">Espírito Santo</option>
+      <option value="GO">Goiás</option>
+      <option value="MA">Maranhão</option>
+      <option value="MT">Mato Grosso</option>
+      <option value="MS">Mato Grosso do Sul</option>
+      <option value="MG">Minas Gerais</option>
+      <option value="PA">Pará</option>
+      <option value="PB">Paraíba</option>
+      <option value="PR">Paraná</option>
+      <option value="PE">Pernambuco</option>
+      <option value="PI">Piauí</option>
+      <option value="RJ">Rio de Janeiro</option>
+      <option value="RN">Rio Grande do Norte</option>
+      <option value="RS">Rio Grande do Sul</option>
+      <option value="RO">Rondônia</option>
+      <option value="RR">Roraima</option>
+      <option value="SC">Santa Catarina</option>
+      <option value="SP">São Paulo</option>
+      <option value="SE">Sergipe</option>
+      <option value="TO">Tocantins</option>
+    </select>          
+    <!-- <button onclick="alternarCategorias()">Alternar Categorias</button> -->
+    <!-- <button onclick="toggleAgravantesCombinados()">Vários Agravantes</button> -->
+  </div>
+
+  <div class="chart-box-line" id="barra">
+    <canvas id="grafico-influenciadores"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-box-doughnut">
+      <canvas id="grafico-sexo"></canvas>
+  </div>
+
+    <div class="chart-box">
+      <canvas id="grafico-faixa-etaria"></canvas>
+    </div> 
+  </section>
+  <script src="../js/dash.js"></script>
+
+</body>
+</html>

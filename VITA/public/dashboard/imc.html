@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/painel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" type="image/png" href="../logos/coracao-logo.png"> 
+    <title>Vita - Dashboard</title>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/br/br-all.js"></script>
+</head>
+<body">
+<div class="lateral">
+  <img class="logo" src="../assets/logo.png" alt="Vita Logo">
+  <div class="hello">
+      <h3> Bem vindo! </h3>
+  </div>
+  <nav>
+      <a href="./imc.html"><i class="fas fa-map"></i>Mapa IMC</a>
+      <a href="./dash.html"><i class="fa-solid fa-chart-bar"></i> Dashboard</a>
+      <a href="../index.html" class="sair" onclick="limparSessao()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+  </nav>
+</div>
+<button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <div class="legenda-imc">
+      <div class="item-legenda" data-imc="normal" title="IMC até 24,9 é considerado normal" style="background-color: #4CAF50;">
+        IMC ≤ 24,9<br><strong>Normal</strong>
+      </div>
+      <div class="item-legenda" data-imc="sobrepeso" title="IMC entre 25 e 29,9 indica sobrepeso" style="background-color: #FBC02D;">
+        IMC entre 25 e 29,9<br><strong>Sobrepeso</strong>
+      </div>
+      <div class="item-legenda" data-imc="obesidade" title="IMC entre 30 e 39,9 indica obesidade" style="background-color: #F44336;">
+        IMC ≥ 30<br><strong>Obesidade</strong>
+      </div>
+      <div class="item-legenda" data-imc="obesidade-morbida" title="IMC a partir de 40 é considerado obesidade mórbida" style="background-color: #B71C1C;">
+        IMC ≥ 40<br><strong>Obesidade Mórbida</strong>
+      </div>
+    </div>
+    <div id="container" class="container-dash" style="height: 600px; min-width: 310px"></div> 
+    <div class="card-estados" id="card-estados" style="display: none;">
+      <h3>Estados Selecionados</h3>
+      <ul id="lista-estados"></ul>
+    </div>
+    <script src="../js/imc.js"></script>
+  </body>
+</html>
