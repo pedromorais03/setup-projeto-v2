@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mysql:
+    build: ./whensix-sql
+    container_name: whensix-mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: urubu100
+      MYSQL_DATABASE: whensix
+      MYSQL_USER: whensix
+      MYSQL_PASSWORD: urubu100
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  nodejs-app:
+    build: ./VITA
+    container_name: whensix-node-container
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+
+  java-app:
+    build: ./whensix-projeto
+    container_name: whensix-java-container
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
